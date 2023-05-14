@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct QueryTag: View {
-    var query : String
+    var query : Query
     var isSelected : Bool
     
     var body: some View {
-        Text(query)
+        Text(query.rawValue)
             .font(.caption)
             .bold()
-            .foregroundColor(isSelected ? .black : .green)
+            .foregroundColor(isSelected ? .green : .black)
             .padding(10)
             .background(.thinMaterial)
             .cornerRadius(10)
@@ -24,6 +24,6 @@ struct QueryTag: View {
 
 struct QueryTag_Previews: PreviewProvider {
     static var previews: some View {
-        QueryTag(query: "Nature", isSelected: true)
+        QueryTag(query: Query.nature, isSelected: true)
     }
 }
