@@ -7,6 +7,8 @@
 
 import Foundation
 
+var previewVideo : Video = load("videoData.json")
+
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
 
@@ -23,6 +25,7 @@ func load<T: Decodable>(_ filename: String) -> T {
 
     do {
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         return try decoder.decode(T.self, from: data)
     } catch {
         fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
